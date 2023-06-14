@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web");
+
+* {
+    font-family: "Titillium Web", sans-serif;
+}
+
+#intro {
+    background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
+    height: 100vh;
+}
+
+.navbar .navbar-brand {
+    font-size: 30px;
+}
+
+.navbar .nav-item {
+    padding: 10px 20px;
+}
+
+.navbar .nav-link {
+    font-size: 20px;
+    margin-left: 10px;
+    color: #fff !important;
+}
+
+.fa-bars {
+    color: #007bff;
+    font-size: 30px;
+}
+.opacity{
+    background: rgba(255, 255, 255, 0.178);
+      backdrop-filter: blur(10px);
+}
