@@ -53,55 +53,63 @@
 </div>
 <hr>
 
-<div id="user" class="container p-3">
-    <h3>Members Report</h3>
-    <p>Total Account: {{ count($members) }}</p>
-    <h5>
-        <span class="badge bg-success">Admin</span>: {{ $members->where('role', 'admin')->count() }}
-        <span class="badge bg-primary">Manager</span>: {{ $members->where('role', 'manager')->count() }}
-        <span class="badge bg-warning text-dark">User</span>: {{ $members->where('role', 'user')->count() }}
-    </h5>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped table-shadow">
+<div class="container-fluid px-4">
+    <div class="row">
+      <div class="col-lg-6">
+        <div id="user" class="container p-3">
+          <h3>Members Report</h3>
+          <p>Total Account: {{ count($members) }}</p>
+          <h5>
+            <span class="badge bg-success">Admin</span>: {{ $members->where('role', 'admin')->count() }}
+            <span class="badge bg-primary">Manager</span>: {{ $members->where('role', 'manager')->count() }}
+            <span class="badge bg-warning text-dark">User</span>: {{ $members->where('role', 'user')->count() }}
+          </h5>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-shadow">
                 <thead>
-                    <tr>
-                        <th><strong>Name</strong></th>
-                        <th><strong>Address</strong></th>
-                        <th><strong>Phone Number</strong></th>
-                        <th><strong>Status</strong></th>
-                    </tr>
+                  <tr>
+                    <th><strong>Name</strong></th>
+                    <th><strong>Address</strong></th>
+                    <th><strong>Phone Number</strong></th>
+                    <th><strong>Status</strong></th>
+                  </tr>
                 </thead>
                 <tbody>
-                    @foreach ($members as $member)
-                    <tr>
-                        <td>{!! str_ireplace(request('search'), '<mark>' . request('search') . '</mark>', $member['name']) !!}</td>
-                        <td>{!! str_ireplace(request('search'), '<mark>' . request('search') . '</mark>', $member['address']) !!}</td>
-                        <td>{!! str_ireplace(request('search'), '<mark>' . request('search') . '</mark>', $member['phone_number']) !!}</td>
-                        <td>
-                            @if ($member['role'] === 'admin')
-                                <span class="badge bg-success">Admin</span>
-                            @elseif ($member['role'] === 'manager')
-                                <span class="badge bg-primary">Manager</span>
-                            @else
-                                <span class="badge bg-warning text-dark">User</span>
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach
+                  @foreach ($members as $member)
+                  <tr>
+                    <td>{!! str_ireplace(request('search'), '<mark>' . request('search') . '</mark>', $member['name']) !!}</td>
+                    <td>{!! str_ireplace(request('search'), '<mark>' . request('search') . '</mark>', $member['address']) !!}</td>
+                    <td>{!! str_ireplace(request('search'), '<mark>' . request('search') . '</mark>', $member['phone_number']) !!}</td>
+                    <td>
+                      @if ($member['role'] === 'admin')
+                      <span class="badge bg-success">Admin</span>
+                      @elseif ($member['role'] === 'manager')
+                      <span class="badge bg-primary">Manager</span>
+                      @else
+                      <span class="badge bg-warning text-dark">User</span>
+                      @endif
+                    </td>
+                  </tr>
+                  @endforeach
                 </tbody>
-            </table>
+              </table>
+            </div>
+          </div>
         </div>
+      </div>
+  
+      <div class="col-lg-6">
+        <div id="donation" class="container">
+          <div class="card-body">
+            <h3>Donation Analytics Report</h3>
+            <p>Total Donations: PHP{{ number_format($totalDonations, 2) }}</p>
+            <canvas id="donationChart" width="400" height="200"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-<hr>
-<div id="donation" class="container">
-    <div class="card-body">
-        <h3>Donation Analytics Report</h3>
-        <p>Total Donations: PHP{{ number_format($totalDonations, 2) }}</p>
-        <canvas id="donationChart" width="400" height="200"></canvas>
-    </div>
-</div>
+  </div>
 <hr>
 <div id="attendance" class="container p-3">
     <div class="card-body">
