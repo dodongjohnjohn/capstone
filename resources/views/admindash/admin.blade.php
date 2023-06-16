@@ -1,15 +1,23 @@
  
  @extends('link')
 
-  <div class="d-flex" id="wrapper">
-      <div class="bg-white" id="sidebar-wrapper">
-          <div class="sidebar-heading text-center py-2 primary-text fs-4 fw-bold text-uppercase border-bottom">
-              <i class="fas fa-user-secret me-2"></i>SFC_CFC
-          </div>
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Welcome, {{ session('user_name') }}! <br> Role: {{ session('user_role') }}</strong>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
+ @php
+ $alertClosed = isset($_COOKIE['alert_closed']);
+@endphp
+
+<div class="d-flex" id="wrapper">
+ <div class="bg-white" id="sidebar-wrapper">
+   <div class="sidebar-heading text-center py-2 primary-text fs-4 fw-bold text-uppercase border-bottom">
+     <i class="fas fa-user-secret me-2"></i>SFC_CFC
+   </div>
+   
+   @if (!$alertClosed)
+   <div class="alert alert-warning alert-dismissible fade show" role="alert">
+     <strong>Welcome, {{ session('user_name') }}! <br> Role: {{ session('user_role') }}</strong>
+     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="closeAlert()"></button>
+   </div>
+ @endif
+    
 
 
 
@@ -47,11 +55,7 @@
 
            
               
-             <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-             href="{{ route('register') }}">
-             <i class="fa fa-user-plus" aria-hidden="true"></i> Register
-            </a>
-
+          
             <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
              href="{{ route('reports')}}">
              <i class="fa fa-user-plus" aria-hidden="true"></i> Reports
@@ -129,5 +133,8 @@
     el.classList.toggle("toggled");
   };
 
-
+  function closeAlert() {
+    // Set a cookie to mark the alert as closed
+    document.cookie = "alert_closed=true; path=/;";
+  }
 </script>

@@ -1,5 +1,5 @@
-@extends('admindash.admin')
-@section('menu-content')
+@extends('main')
+@section('content')
 
 <div class="container">
   <div class="row justify-content-center">

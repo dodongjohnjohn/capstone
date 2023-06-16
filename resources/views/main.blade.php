@@ -22,12 +22,16 @@
     <li class="nav-item">
       <a href="{{ route('loginform') }}" class="nav-link" aria-current="page">Login</a>
    
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{{route('register')}}">Register</a>
+    </li>
       
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="#about">About us</a>
+      </li>
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#contact">Contact Us</a>
-  
       </li>
   </ul>
 
@@ -62,29 +66,129 @@
 </div>
 </div>
 </div>
+<!-- About Us section -->
 <section id="about" class="py-5">
   <div class="container">
-    <div class="card bg-white rounded-0 shadow">
+    <div class="card sectioning bg-white rounded-0 shadow">
       <div class="card-body p-4 text-center">
-        <h2>About Us</h2>
+        <h2 class="mb-4">About Us</h2>
         <p>
-          We are a group of youth passionate about making a positive impact in our community. Through our youth groups, we strive to empower young individuals and provide them with opportunities for growth, learning, and service.
+          We are a group of passionate youth dedicated to making a positive impact in our community. Our mission is to empower young individuals, provide opportunities for growth, and engage in meaningful service.
         </p>
         <p>
-          Our youth groups engage in various activities such as leadership development, community service projects, spiritual retreats, and social gatherings. We believe in fostering a supportive and inclusive environment where young people can thrive and make a difference.
+          Through our youth groups, we focus on leadership development, community service projects, spiritual retreats, and social gatherings. We strive to create a supportive and inclusive environment where young people can thrive and contribute to a better future.
         </p>
         <p>
-          Join us today and be part of a vibrant community of youth dedicated to creating a better future.
+          Join us today and become part of a vibrant community committed to creating positive change.
         </p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Contact Us section -->
+<section id="contact" class="py-5 bg-light">
+  <div class="container">
+    <div class="card bg-white rounded-0 shadow">
+      <div class="card-body p-4 text-center">
+        <h2 class="mb-4">Contact Us</h2>
+        <p>
+          If you have any inquiries or would like to get in touch with us, please fill out the form below or reach out to us using the provided contact information.
+        </p>
+        <form>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-control" id="message" rows="4" placeholder="Enter your message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer class="py-2 text-dark" style="background-color: rgba(0, 0, 255, 0.2);">
-  <div class="container text-center">
-    <p>&copy; 2023 SFC_CFC Event System. All rights reserved.</p>
+<!-- Footer -->
+<footer class="py-2 text-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="footer-section">
+          <div class="footer-icon">
+            <div class="square-icon"></div>
+          </div>
+          <div class="footer-content">
+            <div><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+            <h6>Address:</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="footer-section">
+          <div class="footer-icon">
+            <div class="square-icon"></div>
+          </div>
+          <div class="footer-content">
+            <div><i class="fa fa-mobile" aria-hidden="true"></i></div>
+            <h6>Phone:</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="footer-section">
+          <div class="footer-icon">
+            <div class="square-icon"></div>
+          </div>
+          <div class="footer-content">
+            <div><i class="fa fa-envelope" aria-hidden="true"></i></div>
+            <h6>Email:</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-center">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <a href="https://www.facebook.com/SFCHilongosChapter" target="_blank" rel="nofollow">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://twitter.com/example" target="_blank" rel="nofollow">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.instagram.com/example" target="_blank" rel="nofollow">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
+          <div>
+            <p>© 2023 SFC_CFC Event System. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </footer>
 
