@@ -49,6 +49,8 @@
 <!-- Navbar -->
 <!-- Hero section with background image -->
 <div id="intro" class="bg-image shadow-2-strong">
+ <h1 class="heading">Singles For Christ | Couples For Christ</h1>
+
   <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 255, 0.2);">
     <div class="container">
       <div class="row justify-content-center">
@@ -67,130 +69,90 @@
 </div>
 </div>
 <!-- About Us section -->
-<section id="about" class="py-5">
+<br />
+<section id="about" class="py-5" style="background: rgba(237, 225, 208, 0.5);">
   <div class="container">
-    <div class="card sectioning bg-white rounded-0 shadow">
-      <div class="card-body p-4 text-center">
-        <h2 class="mb-4">About Us</h2>
-        <p>
-          We are a group of passionate youth dedicated to making a positive impact in our community. Our mission is to empower young individuals, provide opportunities for growth, and engage in meaningful service.
-        </p>
-        <p>
-          Through our youth groups, we focus on leadership development, community service projects, spiritual retreats, and social gatherings. We strive to create a supportive and inclusive environment where young people can thrive and contribute to a better future.
-        </p>
-        <p>
-          Join us today and become part of a vibrant community committed to creating positive change.
-        </p>
+    <div class="row justify-content-between">
+      <div class="col-lg-4 aos-init" data-aos="fade-up">
+        <span class="subheading mb-4 d-block heading" style="border-bottom: {{ strlen('About us') * 1 }}px solid orange;">About us</span>
+        <h2 class="mb-4 heading">Living and Sharing<br>The Gospel</h2>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+        <p class="mt-5"><a href="#" class="btn btn-primary">Know more about us</a></p>
+      </div>
+      <div class="col-lg-6 aos-init" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8eW91dGh8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Image" class="img-fluid rounded">
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-lg-6 aos-init" data-aos="fade-up" style="border-right: 1px solid orange;">
+        <h3 class="mb-4 heading">Our Mission</h3>
+        <p>Building the Church of the Home. Building the Church of the Poor.</p>
+      </div>
+      <div class="col-lg-6 aos-init" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="mb-4 heading" id="vision">Our Vision</h3>
+        <p>Every single man and woman all over the world experiencing Christ..</p>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- Contact Us section -->
-<section id="contact" class="py-5 bg-light">
-  <div class="container">
-    <div class="card bg-white rounded-0 shadow">
-      <div class="card-body p-4 text-center">
-        <h2 class="mb-4">Contact Us</h2>
-        <p>
-          If you have any inquiries or would like to get in touch with us, please fill out the form below or reach out to us using the provided contact information.
-        </p>
-        <form>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your name">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email">
-              </div>
-            </div>
+
+<br />
+<!-- Footer -->
+<footer class="py-2 text-dark" style="background: rgba(237, 225, 208, 0.5);">
+  <div class="site-footer text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="widget" id="contact">
+            <h3>Contact</h3>
+            <address>Hilongos, Leyte</address>
+            <ul class="list-unstyled links">
+              <li><a href="tel://11234567890">+63(0927)-307-2133</a></li>
+              <li><a href="mailto:info@mydomain.com">info@mydomain.com</a></li>
+            </ul>
           </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea class="form-control" id="message" rows="4" placeholder="Enter your message"></textarea>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="widget">
+            <h3>Links</h3>
+            <ul class="list-unstyled links">
+              <li><a href="#vision">Our Vision</a></li>
+              <li><a href="#about">About us</a></li>
+              <li><a href="#contact">Contact us</a></li>
+            </ul>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="widget">
+            <a class="navbar-brand" href="/" style="font-size: 30px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);">
+              <span class="text-warning">Sfc</span>Cfc
+            </a>
+            <!-- Widget content goes here -->
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- Footer -->
-<footer class="py-2 text-dark">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="footer-section">
-          <div class="footer-icon">
-            <div class="square-icon"></div>
-          </div>
-          <div class="footer-content">
-            <div><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-            <h6>Address:</h6>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="footer-section">
-          <div class="footer-icon">
-            <div class="square-icon"></div>
-          </div>
-          <div class="footer-content">
-            <div><i class="fa fa-mobile" aria-hidden="true"></i></div>
-            <h6>Phone:</h6>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="footer-section">
-          <div class="footer-icon">
-            <div class="square-icon"></div>
-          </div>
-          <div class="footer-content">
-            <div><i class="fa fa-envelope" aria-hidden="true"></i></div>
-            <h6>Email:</h6>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="text-center">
-          <ul class="list-inline mb-0">
-            <li class="list-inline-item">
-              <a href="https://www.facebook.com/SFCHilongosChapter" target="_blank" rel="nofollow">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://twitter.com/example" target="_blank" rel="nofollow">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://www.instagram.com/example" target="_blank" rel="nofollow">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
-          <div>
-            <p>© 2023 SFC_CFC Event System. All rights reserved.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="card-body p-4 text-center">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1648.0369629243794!2d124.74785286653088!3d10.37306193248466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33076ee956378fb5%3A0xae7f36f0e4559671!2sImmaculate%20Concepcion%20Parish!5e1!3m2!1sen!2sph!4v1686923578969!5m2!1sen!2sph" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <div class="social-networks">
+    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.facebook.com/SFCHilongosChapter" class="facebook"><i class="fab fa-facebook"></i></a>
+    <a href="#" class="google"><i class="fab fa-google-plus"></i></a>
+  </div>
+  <div class="footer-bottom text-center py-3">
+    <p>© 2023 SFC_CFC Event System. All rights reserved.</p>
   </div>
 </footer>
+
+
+
 
 
 

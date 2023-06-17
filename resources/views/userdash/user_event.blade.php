@@ -10,7 +10,7 @@
   <div class="mt-2 center">
     <div class="col-md-12">
       <div class="mt-1">
-        {{ $events->links('pagination::bootstrap-4', ['links' => 3]) }}
+        {{ $events->links('pagination::bootstrap-4', ['links' => 5]) }}
       </div>
     </div>
   </div>

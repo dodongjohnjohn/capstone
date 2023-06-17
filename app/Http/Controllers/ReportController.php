@@ -39,5 +39,3 @@ class ReportController extends Controller
         return view('report', compact('totalMembers', 'totalDonations', 'totalGroups', 'attendancePercentage', 'members', 'events', 'totalDonations', 'donations'));
     }
 }
-
-

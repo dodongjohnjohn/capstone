@@ -31,7 +31,7 @@
             </div>
             <br>
             <div class="form-group">
-              <input placeholder="Enter Password (e.g., Password1!)" type="password" name="password" class="form-control" required pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W+)(?!.*\s).*$" />
+              <input placeholder="Enter Password (e.g., Password1!)" type="text" name="password" class="form-control" required pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W+)(?!.*\s).*$" />
               @if($errors->has('password'))
               <span class="text-danger">{{ $errors->first('password')}}</span>
               @endif

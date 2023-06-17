@@ -7,7 +7,7 @@
 
 <div class="d-flex" id="wrapper">
  <div class="bg-white" id="sidebar-wrapper">
-   <div class="sidebar-heading text-center py-2 primary-text fs-4 fw-bold text-uppercase border-bottom">
+   <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
      <i class="fas fa-user-secret me-2"></i>SFC_CFC
    </div>
    
@@ -18,10 +18,7 @@
    </div>
  @endif
     
-
-
-
-          <div class="list-group list-group-flush my-3">
+          <div class="list-group list-group-flush my-4 p-2">
               <a href="{{ route('reports')}}"
                   class="list-group-item list-group-item-action bg-transparent second-text fw-bold active"><i
                       class="fas fa-tachometer-alt me-2"></i>
@@ -58,7 +55,7 @@
           
             <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
              href="{{ route('reports')}}">
-             <i class="fa fa-user-plus" aria-hidden="true"></i> Reports
+             <i class="fa fa-bar-chart" aria-hidden="true"></i> Reports
             </a>
             @if (session('user_role') === 'admin')
             <!-- Show the button only if the user's role is 'admin' -->
@@ -83,7 +80,7 @@
           </div>
       </div>
       <div id="page-content-wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-2 px-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent px-3">
             <div class="d-flex align-items-center">
                 <i class="fas fa-align-left primary-text fs-4 me-1" id="menu-toggle"></i>
                 <h2 class="fs-2 m-0">Dashboard</h2>
@@ -91,7 +88,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <i class="fa-solid fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">

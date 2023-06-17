@@ -32,10 +32,12 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <p>{{ $group->id }}</p>
+                            
+                            <input type="hidden" value="{{ $group->id }}">
                             <h5 class="card-title">{!! str_ireplace($search, '<span class="text-warning">' . $search . '</span>', $group->group_name) !!}</h5>
                             <p class="card-text">
                                 <strong>Leader: </strong>{{ $group->leader_name }}
+                                <input type="text" value="{{ $group->leader_id }}">
                             </p>
                             <p class="card-text">
                                 <strong>Members:</strong>
@@ -48,20 +50,21 @@
                                         class="fa fa-eye"></i></a>
                                 <a href="{{ route('add.member', ['id' => $group->id]) }}" class="btn btn-info"><i
                                         class="fa fa-user-plus"></i></a>
-                                        @if(Auth::user()->isAdmin())
-                                <form action="{{ route('delete.group', ['id' => $group->id]) }}" method="POST" style="display: inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this group?')">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </form>
-                            @endif
+                                @if(Auth::user()->isAdmin())
+                                    <form action="{{ route('delete.group', ['id' => $group->id]) }}" method="POST"
+                                        style="display: inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Are you sure you want to delete this group?')">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                @endif
                         </div>
                     </div>
                 </div>
             @endforeach
-
         </div>
     </div>
     <script>
