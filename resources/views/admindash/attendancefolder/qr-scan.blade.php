@@ -49,8 +49,6 @@
         </div>
     </div>
 </div>
-
-
 <script>
     // Get the video element
     const video = document.getElementById('preview');
