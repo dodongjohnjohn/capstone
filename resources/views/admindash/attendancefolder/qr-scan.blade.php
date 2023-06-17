@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<script src="asset/js/instascan.min.js"></script>
+<script type="text/javascript" src="instascan.min.js"></script>
 
 <script>
     // Get the video element
