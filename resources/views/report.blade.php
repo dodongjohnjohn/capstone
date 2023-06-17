@@ -1,61 +1,57 @@
-
 @extends('admindash.admin')
 @section('menu-content')
 
 
-<div id="back"class="container-fluid px-4">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 my-2">
-        <div class="col">
+<div id="back" class="container-fluid px-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 my-2 justify-content-center">
+        <div class="col-md-6 col-lg-4 text-center">
             <a href="#user">
-                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                <div class="p-3 alert-warning shadow-sm d-flex justify-content-around align-items-center rounded">
                     <div>
-                        <h3 class="fs-2">{{ $totalMembers }}</h3>
-                        <p class="fs-5">Users</p>
+                        <h3 class="fs-2 text-dark">{{ $totalMembers }}</h3>
+                        <p class="fs-5 text-dark">Users</p>
                     </div>
                     <i class="fas fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                 </div>
             </a>
         </div>
-        <div class="col">
+        <div class="col-md-6 col-lg-4 text-center">
             <a href="#donation">
-                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                <div class="p-3 alert alert-primary shadow-sm d-flex justify-content-around align-items-center rounded">
                     <div>
-                        <h3 class="fs-2">PHP{{ number_format($totalDonations, 2) }}</h3>
-                        <p class="fs-5">Donation</p>
+                        <h3 class="fs-2 text-primary">PHP{{ number_format($totalDonations, 2) }}</h3>
+                        <p class="fs-5 text-primary">Donation</p>
                     </div>
                     <i class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                 </div>
             </a>
         </div>
-        <div class="col">
+        <div class="col-md-6 col-lg-4 text-center">
             <a href="#attendance">
-                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                <div class="p-3 alert-success shadow-sm d-flex justify-content-around align-items-center rounded">
                     <div>
-                        <h3 class="fs-2">{{ $attendancePercentage }}</h3>
-                        <p class="fs-5">Attendance</p>
+                        <h3 class="fs-2 text-success">{{ $attendancePercentage }}</h3>
+                        <p class="fs-5 text-success">Attendance</p>
                     </div>
                     <i class="fa fa-list-alt fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                 </div>
             </a>
         </div>
-        <div class="col">
-            <a href="#groups">
-                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                    <div>
-                        <h3 class="fs-2">25%</h3>
-                        <p class="fs-5">Groups</p>
-                    </div>
-                    <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                </div>
-            </a>
-        </div>
     </div>
 </div>
+
+<div id="donation" class="container">
+    <div class="card-body">
+      <h3>Donation Analytics Report</h3>
+      <p>Total Donations: PHP{{ number_format($totalDonations, 2) }}</p>
+      <canvas id="donationChart" width="400" height="200"></canvas>
+    </div>
+  </div>
+
 <hr>
 
 <div class="container-fluid px-4">
     <div class="row">
-      <div class="col-lg-6">
         <div id="user" class="container p-3">
           <h3>Members Report</h3>
           <p>Total Account: {{ count($members) }}</p>
@@ -78,9 +74,9 @@
                 <tbody>
                   @foreach ($members as $member)
                   <tr>
-                    <td>{!! str_ireplace(request('search'), '<mark>' . request('search') . '</mark>', $member['name']) !!}</td>
-                    <td>{!! str_ireplace(request('search'), '<mark>' . request('search') . '</mark>', $member['address']) !!}</td>
-                    <td>{!! str_ireplace(request('search'), '<mark>' . request('search') . '</mark>', $member['phone_number']) !!}</td>
+                    <td>{{ $member['name'] }}</td>
+                    <td>{{ $member['address'] }}</td>
+                    <td>{{ $member['phone_number'] }}</td>
                     <td>
                       @if ($member['role'] === 'admin')
                       <span class="badge bg-success">Admin</span>
@@ -95,19 +91,9 @@
                 </tbody>
               </table>
             </div>
-          </div>
         </div>
       </div>
-  
-      <div class="col-lg-6">
-        <div id="donation" class="container">
-          <div class="card-body">
-            <h3>Donation Analytics Report</h3>
-            <p>Total Donations: PHP{{ number_format($totalDonations, 2) }}</p>
-            <canvas id="donationChart" width="400" height="200"></canvas>
-          </div>
-        </div>
-      </div>
+      
     </div>
   </div>
 <hr>
@@ -122,49 +108,6 @@
                         <th><strong>Address</th>
                         <th><strong>Time</th>
                         <th><strong>Date</th>
-                        <th><strong>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($events as $event)
-                    <tr>
-                        <td>{!! str_ireplace(request('search'), '<mark>'.request('search').'</mark>', $event['title']) !!}</td>
-                        <td>{!! str_ireplace(request('search'), '<mark>'.request('search').'</mark>', $event['description']) !!}</td>
-                        <td>{!! str_ireplace(request('search'), '<mark>'.request('search').'</mark>', $event['address']) !!}</td>
-                        <td>{{ $event['time'] }}</td>
-                        <td>{{ $event['date'] }}</td>
-                        <td>
-                            <a href="{{ route('view.attendance', ['eventId' => $event->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
-                            <a href="{{ route('add.attendance', ['eventId' => $event->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></a>
-                            <a href="{{ route('qr.scan', ['eventId' => $event->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-qrcode"></i></a>
-    
-                            @if (Auth::check() && Auth::user()->isAdmin())
-                                <form action="{{ route('attendance.destroy', ['id' => $event->id]) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                                </form>
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<hr>
-
-
-<div id="attendance" class="container p-3">
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th><strong>Title</th>
-                        <th><strong>Description</th>
-                        <th><strong>Address</th>
                         
                     </tr>
                 </thead>
@@ -176,19 +119,7 @@
                         <td>{!! str_ireplace(request('search'), '<mark>'.request('search').'</mark>', $event['address']) !!}</td>
                         <td>{{ $event['time'] }}</td>
                         <td>{{ $event['date'] }}</td>
-                        <td>
-                            <a href="{{ route('view.attendance', ['eventId' => $event->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
-                            <a href="{{ route('add.attendance', ['eventId' => $event->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></a>
-                            <a href="{{ route('qr.scan', ['eventId' => $event->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-qrcode"></i></a>
-    
-                            @if (Auth::check() && Auth::user()->isAdmin())
-                                <form action="{{ route('attendance.destroy', ['id' => $event->id]) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                                </form>
-                            @endif
-                        </td>
+                   
                     </tr>
                     @endforeach
                 </tbody>
@@ -196,6 +127,9 @@
         </div>
     </div>
 </div>
+<hr>
+
+
 
   
 @endsection

@@ -83,7 +83,7 @@ class GroupController extends Controller
         ]);
         $group->save();
     
-        return back()->with('success', 'Group created successfully.');
+        return redirect()->route('group', ['id' => $group->id])->with('success', 'Group created successfully.');
     }
     
     

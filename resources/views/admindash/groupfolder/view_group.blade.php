@@ -3,7 +3,7 @@
 @section('menu-content')
 
     <form action="{{ route('groups.update', ['id' => $group->id]) }}" method="POST">
-
+        <input type="text" value="{{ $group->leader_id }}">
         @csrf
         @method('PUT')
 
