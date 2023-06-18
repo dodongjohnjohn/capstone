@@ -49,8 +49,8 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="instascan.min.js"></script>
-<!--<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>-->
+{{-- <script type="text/javascript" src="instascan.min.js"></script> --}}
+<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
 <script>
     // Get the video element
