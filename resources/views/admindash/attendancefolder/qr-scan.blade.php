@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="https://cdn.rawgit.com/cozmo/jsQR/master/dist/jsQR.js"></script>
+<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
 <script>
     // Get the video element
