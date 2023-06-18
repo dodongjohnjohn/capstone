@@ -60,12 +60,19 @@
             <span class="badge bg-primary">Manager</span>: {{ $members->where('role', 'manager')->count() }}
             <span class="badge bg-warning text-dark">User</span>: {{ $members->where('role', 'user')->count() }}
           </h5>
+          <div class="btn-group mb-3">
+            <button class="btn btn-primary" onclick="printReport('user')">
+                <i class="fa fa-print"></i> Print
+            </button>
+        </div>
+        <br />
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered table-striped table-shadow">
                 <thead>
                   <tr>
                     <th><strong>Name</strong></th>
+                    <th><strong>Email</strong></th>
                     <th><strong>Address</strong></th>
                     <th><strong>Phone Number</strong></th>
                     <th><strong>Status</strong></th>
@@ -75,6 +82,7 @@
                   @foreach ($members as $member)
                   <tr>
                     <td>{{ $member['name'] }}</td>
+                    <td>{{ $member['email'] }}</td>
                     <td>{{ $member['address'] }}</td>
                     <td>{{ $member['phone_number'] }}</td>
                     <td>
@@ -91,6 +99,8 @@
                 </tbody>
               </table>
             </div>
+            <div class="d-flex justify-content-end mt-3">
+            </div>
         </div>
       </div>
       
@@ -99,6 +109,11 @@
 <hr>
 <div id="attendance" class="container p-3">
     <div class="card-body">
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="printReport('attendance')">
+                <i class="fa fa-print"></i> Print
+            </button>
+        </div>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -108,7 +123,6 @@
                         <th><strong>Address</th>
                         <th><strong>Time</th>
                         <th><strong>Date</th>
-                        
                     </tr>
                 </thead>
                 <tbody>
@@ -119,16 +133,28 @@
                         <td>{!! str_ireplace(request('search'), '<mark>'.request('search').'</mark>', $event['address']) !!}</td>
                         <td>{{ $event['time'] }}</td>
                         <td>{{ $event['date'] }}</td>
-                   
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+        
     </div>
 </div>
+
 <hr>
 
+
+<div class="container">
+    <!-- Your page content goes here -->
+
+    <!-- Sticky button -->
+    <a href="#back">
+    <div class="fixed-bottom" style="padding-left: 95%;">
+        <button type="button" class="btn btn-primary" style="margin-bottom: 5%; background-color: rgba(0, 0, 0, 0.5); border-radius: 10%; font-size: 24px;"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></button>
+    </div>
+</a>
+</div>
 
 
   
@@ -176,17 +202,18 @@
         });
     });
 </script>
-<div class="container">
-    <!-- Your page content goes here -->
 
-    <!-- Sticky button -->
-    <a href="#back">
-    <div class="fixed-bottom" style="padding-left: 95%;">
-        <button type="button" class="btn btn-primary" style="margin-bottom: 5%; background-color: rgba(0, 0, 0, 0.5); border-radius: 10%; font-size: 24px;"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></button>
-    </div>
-</a>
-</div>
+<script>
+    function printReport(reportId) {
+        const report = document.getElementById(reportId).innerHTML;
+        const printWindow = window.open('', '', 'height=500,width=800');
+        printWindow.document.write('<html><head><title>Print Report</title>');
+        printWindow.document.write('</head><body>');
+        printWindow.document.write(report);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+</script>
 
-
-  
 @endsection

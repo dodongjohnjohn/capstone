@@ -129,6 +129,78 @@ public function destroy($id)
 
     return redirect()->back()->with('success', 'Event deleted successfully.');
 }
+public function printAttendanceRecords($eventId)
+{
+    // Retrieve the event and attendance records
+    $event = Event::findOrFail($eventId);
+    $attendance = Attendance::where('event_id', $eventId)->get();
+
+    // Create a new TCPDF instance
+    $pdf = new TCPDF();
+
+    // Set document information
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('Your Name');
+    $pdf->SetTitle('Attendance Records');
+    $pdf->SetSubject('Attendance Records');
+
+    // Add a page
+    $pdf->AddPage();
+
+    // Generate the PDF content for Time In records
+    $html = '<h1>Attendance Records - ' . $event->title . ' (Time In)</h1>';
+    $html .= '<table>';
+
+    // Add the column names to the table header
+    $html .= '<tr>';
+    $html .= '<th><strong>Name</strong></th>';
+    $html .= '<th><strong>Time</strong></th>';
+    $html .= '</tr>';
+
+    foreach ($attendance as $record) {
+        if ($record->time_type === 'time_in') {
+            $html .= '<tr>';
+            $html .= '<td>' . $record->name . '</td>';
+            $html .= '<td>' . $record->time . '</td>';
+            $html .= '</tr>';
+        }
+    }
+
+    $html .= '</table>';
+
+    // Write the HTML content to the PDF
+    $pdf->writeHTML($html, true, false, true, false, '');
+
+    // Add a new page for Time Out records
+    $pdf->AddPage();
+
+    // Generate the PDF content for Time Out records
+    $html = '<h1>Attendance Records - ' . $event->title . ' (Time Out)</h1>';
+    $html .= '<table>';
+
+    // Add the column names to the table header
+    $html .= '<tr>';
+    $html .= '<th><strong>Name</strong></th>';
+    $html .= '<th><strong>Time</strong></th>';
+    $html .= '</tr>';
+
+    foreach ($attendance as $record) {
+        if ($record->time_type === 'time_out') {
+            $html .= '<tr>';
+            $html .= '<td>' . $record->name . '</td>';
+            $html .= '<td>' . $record->time . '</td>';
+            $html .= '</tr>';
+        }
+    }
+
+    $html .= '</table>';
+
+    // Write the HTML content to the PDF
+    $pdf->writeHTML($html, true, false, true, false, '');
+
+    // Output the PDF to the browser for printing
+    $pdf->Output('attendance_records.pdf', 'I');
+}
 
 
 }

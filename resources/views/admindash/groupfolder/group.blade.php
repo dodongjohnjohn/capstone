@@ -25,47 +25,52 @@
         </div>
         @if ($groups->isEmpty())
             <p>No results found for "{{ request('search') }}"</p>
+        @else
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Group Name</th>
+                            <th>Leader</th>
+                            <th>Members</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($groups as $group)
+                            <tr>
+                                <td>{!! str_ireplace($search, '<span class="text-warning">' . $search . '</span>', $group->group_name) !!}</td>
+                                <td>{{ $group->leader_name }}</td>
+                                <td>
+                                    <ul class="list-group text-center">
+                                        @foreach ($group->groupMembers as $groupMember)
+                                            <li class="">{{ $groupMember->user_name }}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td>
+                                    <a href="{{ route('show.group', ['id' => $group->id]) }}" class="btn btn-primary"><i
+                                            class="fa fa-eye"></i></a>
+                                    <a href="{{ route('add.member', ['id' => $group->id]) }}" class="btn btn-info"><i
+                                            class="fa fa-user-plus"></i></a>
+                                    @if(Auth::user()->isAdmin())
+                                        <form action="{{ route('delete.group', ['id' => $group->id]) }}" method="POST"
+                                            style="display: inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"
+                                                onclick="return confirm('Are you sure you want to delete this group?')">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         @endif
-
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            @foreach ($groups as $group)
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            
-                            <input type="hidden" value="{{ $group->id }}">
-                            <h5 class="card-title">{!! str_ireplace($search, '<span class="text-warning">' . $search . '</span>', $group->group_name) !!}</h5>
-                            <p class="card-text">
-                                <strong>Leader: </strong>{{ $group->leader_name }}
-                                <input type="text" value="{{ $group->leader_id }}">
-                            </p>
-                            <p class="card-text">
-                                <strong>Members:</strong>
-                                @foreach ($group->groupMembers as $groupMember)
-                                    <li class="list-group"> {{ $groupMember->user_name }}</li>
-                                @endforeach
-                            </p>
-                           
-                                <a href="{{ route('show.group', ['id' => $group->id]) }}" class="btn btn-primary"><i
-                                        class="fa fa-eye"></i></a>
-                                <a href="{{ route('add.member', ['id' => $group->id]) }}" class="btn btn-info"><i
-                                        class="fa fa-user-plus"></i></a>
-                                @if(Auth::user()->isAdmin())
-                                    <form action="{{ route('delete.group', ['id' => $group->id]) }}" method="POST"
-                                        style="display: inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"
-                                            onclick="return confirm('Are you sure you want to delete this group?')">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                @endif
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
     </div>
     <script>
         // Select the search input field
@@ -80,4 +85,4 @@
           }
         });
     </script>
-@endsection('menu-content')
+@endsection

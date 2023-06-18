@@ -27,34 +27,42 @@
 @if ($noResults)
     <p>No results found for "{{ request('query') }}"</p>
 @else
-<div class="row event-card">
-  @foreach ($events as $event)
-  <div class="col-lg-4 col-md-6 mb-4">
-    <div class="card ">
-      <div class="card-body">
-        <p class="card-text">Organizer: {!! str_ireplace(request('query'), '<mark>'.request('query').'</mark>', $event['organizer']) !!}</p>
-        <h5 class="card-title">Topic: {!! str_ireplace(request('query'), '<mark>'.request('query').'</mark>', $event['title']) !!} </h5>
-        <p class="card-text description">{!! str_ireplace(request('query'), '<mark>'.request('query').'</mark>', $event['description']) !!} </p>
-        <p class="card-text">Venue: {!! str_ireplace(request('query'), '<mark>'.request('query').'</mark>', $event['address']) !!} </p>
-        <p class="card-text">Schedule: {{$event['time']}} | {{$event['date']}}</p>
-      </div>
-      <div class="card-footer">
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::fullUrl()) }}" class="btn btn-primary">share link</a>
-        @if(Auth::user()->isAdmin())
-        <form action="{{route('event.destroy',['id' => $event->id]) }}" method="POST" style="display: inline">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this group?')">
-                <i class="fa fa-trash"></i>
-            </button>
-        </form>
-        @endif
-      </div>
-
-     
-    </div>
-  </div>
-  @endforeach
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Organizer</th>
+        <th>Topic</th>
+        <th>Description</th>
+        <th>Venue</th>
+        <th>Schedule</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($events as $event)
+        <tr>
+          <td>{!! str_ireplace(request('query'), '<mark>'.request('query').'</mark>', $event['organizer']) !!}</td>
+          <td>{!! str_ireplace(request('query'), '<mark>'.request('query').'</mark>', $event['title']) !!}</td>
+          <td>{!! str_ireplace(request('query'), '<mark>'.request('query').'</mark>', $event['description']) !!}</td>
+          <td>{!! str_ireplace(request('query'), '<mark>'.request('query').'</mark>', $event['address']) !!}</td>
+          <td>{{ $event['time'] }} | {{ $event['date'] }}</td>
+          <td>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::fullUrl()) }}" class="btn btn-primary">Share link</a>
+            @if(Auth::user()->isAdmin())
+              <form action="{{ route('event.destroy', ['id' => $event->id]) }}" method="POST" style="display: inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this event?')">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </form>
+            @endif
+          </td>
+        </tr>
+      @endforeach
+    </tbody>
+  </table>
 </div>
 @endif
 </div>
@@ -72,4 +80,3 @@
   });
 </script>
 @endsection('menu-content')
-

@@ -51,6 +51,7 @@
 </div>
 
 <script type="text/javascript" src="asset/js/instascan.min.js"></script>
+<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
 <script>
     // Get the video element

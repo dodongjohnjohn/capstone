@@ -1,4 +1,4 @@
-@extends('userdash.user')
+@extends('main_user')
 
 @section('donation-content')
 <style>

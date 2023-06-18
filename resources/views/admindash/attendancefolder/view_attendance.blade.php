@@ -11,6 +11,10 @@
       </form>
     </div>
   </div>
+  <div class="m-2 text-end"> <!-- Add the 'text-end' class for right alignment -->
+    <a href="{{ route('attendance.print', ['eventId' => $event->id]) }}" class="btn btn-primary" target="_blank">Print Attendance Records</a>
+  </div>
+  
 </div>
 @if ($noResults)
 <p>No results found for "{{ request('query') }}"</p>
@@ -68,9 +72,6 @@
 
 @endif
 
-<div class="mt-3">
-  <button class="btn btn-primary" onclick="window.print()">Print</button>
-</div>
 
 
 @endsection
