@@ -49,14 +49,6 @@
                   href="{{ route('group') }}">
                   <i class="fa fa-users me-2" aria-hidden="true"></i> Groups
               </a>
-
-           
-              
-          
-            <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-             href="{{ route('reports')}}">
-             <i class="fa fa-bar-chart" aria-hidden="true"></i> Reports
-            </a>
             @if (session('user_role') === 'admin')
             <!-- Show the button only if the user's role is 'admin' -->
             <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
