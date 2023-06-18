@@ -125,7 +125,7 @@ class CustomAuthController extends Controller
                             
                         ]);
         
-                        return view('userdash.user', compact('user'));
+                        return view('main_user', compact('user'));
                     } elseif ($user->role == 'manager') {
                         // Store user data in session
                         session([

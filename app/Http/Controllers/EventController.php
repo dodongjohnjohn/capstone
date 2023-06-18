@@ -40,7 +40,6 @@ class EventController extends Controller
     {
         if (Auth::check()) {
             $members = User::paginate(6);
-
             return view('admindash.eventfolder.create', compact('members'));
         }
     }

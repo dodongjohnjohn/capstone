@@ -23,6 +23,7 @@ class ReportController extends Controller
         $members = User::all();
         $events = Event::all();
         $totalDonations = Donation::sum('amount');
+        
 
         $donations = Donation::select('created_at', 'amount')
             ->whereYear('created_at', Carbon::now()->year)
