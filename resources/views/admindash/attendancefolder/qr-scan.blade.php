@@ -51,11 +51,6 @@
 </div>
 
 <script type="text/javascript" src="asset/js/instascan.min.js"></script>
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
 
 <script>
     // Get the video element
