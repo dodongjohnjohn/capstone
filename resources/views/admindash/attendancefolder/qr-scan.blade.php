@@ -50,28 +50,6 @@
         </div>
     </div>
 </div>
-
-<style>
-    #qr-video,
-    #preview {
-        width: 100%; /* Set the initial width */
-    }
-
-    @media (max-width: 992px) { /* For medium and smaller screens */
-        #qr-video,
-        #preview {
-            width: 100%; /* Adjust the width as needed for medium screens */
-        }
-    }
-
-    @media (max-width: 768px) { /* For small and smaller screens */
-        #qr-video,
-        #preview {
-            width: 100%; /* Adjust the width as needed for small screens */
-        }
-    }
-</style>
-
 <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
 <script>
