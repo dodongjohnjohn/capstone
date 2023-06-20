@@ -35,8 +35,8 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <li>
-               
-                <a class="dropdown-item"></a>
+                @yield('profile-content')
+                <a class="dropdown-item" href="{{ route('userprofile') }}">User Profile</a>
                 
               </li>
 
@@ -63,23 +63,36 @@
       <section class="home-section">
         <!-- Home content -->
         <div class="container">
-          <div class="mt-3">
-            <div class="row">
-              <div class="col-md-6">
-                <h3 class="subheading text-light fw-bold">Welcome to Sfc|Cfc</h3>
-                <p class="text-dark fw-bold">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                <p class="text-dark fw-bold">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                <p class="mt-5"><a href="#" class="btn btn-primary">Know more about us</a></p>
-              </div>
-              <div class="col-md-6">
-                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8eW91dGh8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Image" class="img-fluid">
-              </div>
+  <div id="home">
+    <section class="home-section">
+      <!-- Home content -->
+      <div class="container">
+        <div class="mt-3">
+          <div class="row">
+            <div class="col-md-6">
+              <h3 class="subheading text-light fw-bold">Welcome to Sfc|Cfc</h3>
+              <p class="text-dark fw-bold">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p class="text-dark fw-bold">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
+                <span id="additionalContent" style="display: none;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span></p>
+              <p class="mt-5"><a href="#" class="btn btn-primary" onclick="toggleContent()">Know more about us</a></p>
+            </div>
+            <div class="col-md-6">
+              <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8eW91dGh8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Image" class="img-fluid">
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
+</div>
+
+<script>
+  function toggleContent() {
+    var additionalContent = document.getElementById("additionalContent");
+    additionalContent.style.display = additionalContent.style.display === "none" ? "inline" : "none";
+  }
+</script>
+
 
 
     <br>
@@ -114,58 +127,88 @@
       <div class="container">
         <div class="card">
           <div class="card-body">
-            <h1 class="card-title text-center fw-bold">Gallery</h1>
+            <h1 class="card-title text-center fw-bold">
+              <span class="text-warning">Youth</span> Activities
+            </h1>
             <hr />
             <div class="row">
-              <div class="col-md-4 p-2">
+              <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                 <div class="image-container">
-                  <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNodXJjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                    alt="Image 1" class="img-fluid">
-                  <div class="overlay"></div>
-                </div>
-              </div>
-              <div class="col-md-4 p-2">
-                <div class="image-container">
-                  <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y2h1cmNofGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                    alt="Image 2" class="img-fluid">
-                  <div class="overlay"></div>
-                </div>
-              </div>
-              <div class="col-md-4 p-2">
-                <div class="image-container">
-                  <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2."
-                                  alt="Image 3" class="img-fluid">
-                              <div class="overlay"></div>
-                          </div>
-                      </div>
-                      <div class="col-md-4 p-2">
-                          <div class="image-container">
-                              <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y2h1cmNofGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                                  alt="Image 2" class="img-fluid">
-                              <div class="overlay"></div>
-                          </div>
-                      </div>
-                      <div class="col-md-4 p-2">
-                          <div class="image-container">
-                              <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2h1cmNofGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                                  alt="Image 3" class="img-fluid">
-                              <div class="overlay"></div>
-                          </div>
-                      </div>
-                      <div class="col-md-4 p-2">
-                          <div class="image-container">
-                              <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNodXJjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                                  alt="Image 1" class="img-fluid">
-                              <div class="overlay"></div>
-                          </div>
-                      </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1507692049790-de58290a4334?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNodXJjaHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    class="w-100 shadow-1-strong rounded mb-4"
+                    alt="Boat on Calm Water"
+                  />
+                  <div class="overlay">
+                    <div class="text">Jesus Loves You</div>
                   </div>
-              </div>
-          </div>
-      </div>
-  </section>
+                </div>
     
-
+                <div class="image-container">
+                  <img
+                    src="https://images.unsplash.com/photo-1630467630122-4bfb7c4984a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8eW91dGglMjBjb25mZXJlbmNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+                    class="w-100 shadow-1-strong rounded mb-4"
+                    alt="Wintry Mountain Landscape"
+                  />
+                  <div class="overlay">
+                    <div class="text">Learn to sing and praise God</div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="image-container">
+                  <img
+                    src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fHlvdXRoJTIwY29uZmVyZW5jZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    class="w-100 shadow-1-strong rounded mb-4"
+                    alt="Mountains in the Clouds"
+                  />
+                  <div class="overlay">
+                    <div class="text">Imagine Everything</div>
+                  </div>
+                </div>
+    
+                <div class="image-container">
+                  <img
+                    src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y2h1cmNofGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+                    class="w-100 shadow-1-strong rounded mb-4"
+                    alt="Boat on Calm Water"
+                  />
+                  <div class="overlay">
+                    <div class="text">Trust everyhting will pass according to my will</div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="image-container">
+                  <img
+                    src="https://media.istockphoto.com/id/1048187866/photo/teenagers-talking-in-youth-club.jpg?s=612x612&w=0&k=20&c=IzKTcCZD5dusZ0ux9d-ekQAqP-tjR0F8mB1meESEJ_I="
+                    class="w-100 shadow-1-strong rounded mb-4"
+                    alt="Waves at Sea"
+                  />
+                  <div class="overlay">
+                    <div class="text">I worship you</div>
+                  </div>
+                </div>
+    
+                <div class="image-container">
+                  <img
+                    src="https://images.unsplash.com/photo-1496516348160-24b35a31856f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTExfHx5b3V0aCUyMGNvbmZlcmVuY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                    class="w-100 shadow-1-strong rounded mb-4"
+                    alt="Yosemite National Park"
+                  />
+                  <div class="overlay">
+                    <div class="text">Let's be together</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
    <br>
    <footer class="py-2 text-dark" style="background: rgba(255, 255, 255, 0.8);">
     <div class="site-footer text-center">
@@ -214,4 +257,3 @@
       <p>© 2023 SFC_CFC Event System. All rights reserved.</p>
     </div>
   </footer>
-

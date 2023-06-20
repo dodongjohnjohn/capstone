@@ -142,6 +142,9 @@ Route::controller(AttendanceController::class)->group(function(){
    Route::match(['get', 'post'], 'attendance', [AttendanceController::class, 'scanQR'])->name('attendance.scanQR');
 
    Route::get('/attendance/{attendanceId}/generate-certificate', [AttendanceController::class, 'generateCertificate']);
+   Route::get('/attendance/{eventId}/print', [AttendanceController::class, 'printAttendanceRecords'])->name('attendance.print');
+
+   
 
 
    
