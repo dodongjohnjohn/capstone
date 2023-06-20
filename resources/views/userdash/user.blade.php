@@ -1,7 +1,4 @@
 
-
-
-
 @extends('main_user')
 
 @section('content')
