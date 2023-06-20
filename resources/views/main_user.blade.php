@@ -22,21 +22,29 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ route('userdonate')}}#donation">Donations</a>
         </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ route('logout') }}">Logout</a>
+          </li>
+
+          
         <li class="nav-item">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          <a class="nav-link dropdown-toggle"  href="{{ route('user.profile') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             <i class="fa fa-user-circle" aria-hidden="true"></i>
             {{ session('user_name') }}
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <li>
-                @yield('profile-content')
-                <a class="dropdown-item" href="{{ route('userprofile') }}">User Profile</a>
+               
+                <a class="dropdown-item"></a>
                 
               </li>
-            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+
+
+          
           </ul>
         </li>
+
       </ul>
     </div>
   </div>

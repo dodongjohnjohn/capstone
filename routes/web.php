@@ -16,8 +16,7 @@ use App\Http\Controllers\CertificateGeneratorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountConfirmationController;
 use App\Http\Controllers\ReportController;
-
-
+use App\Http\Controllers\UserProfileController;
 use App\Models\Event;
 use Symfony\Component\Finder\Iterator\CustomFilterIterator;
 
@@ -55,13 +54,16 @@ Route::controller(AccountConfirmationController::class)->group(function () {
    Route::get('admindash.confirm_account', [AccountConfirmationController::class, 'confirm_account'])->name('confirm.account');
    Route::put('changeRole/{id}', [AccountConfirmationController::class, 'changeRole'])->name('changeRole');
    Route::put('toggleAccountConfirmation', [AccountConfirmationController::class, 'toggleAccountConfirmation'])->name('toggleAccountConfirmation');
+   Route::get('search', [AccountConfirmationController::class, 'search'])->name('members.search');
 });
+
 //login
 Route::controller(CustomAuthController::class)->group(function(){
   // Route::get('/',  [CustomAuthController::class,'index'])->name('login');
    Route::get('login',  [CustomAuthController::class,'index'])->name('loginform');
   // Route::get('registration', [CustomAuthController::class,'register'])->name('register');
    Route::post('dashboard', [CustomAuthController::class,'login'])->name('login');
+   Route::post('main.user', [CustomAuthController::class,'user_ogin'])->name('user.login');
    Route::get('logout', 'logout')->name('logout');
    Route::get('forgot_password', [CustomAuthController::class, 'forgotPassword'])->name('password.request');
    Route::post('password/email', [CustomAuthController::class, 'sendResetLinkEmail'])->name('password.reset');
@@ -76,6 +78,7 @@ Route::controller(CustomAuthController::class)->group(function(){
 //profile
 Route::get('admindash.profile', [ProfileController::class, 'profile'])->name('profile');
 
+Route::get('main_user', [UserProfileController::class, 'user_profile'])->name('user.profile');
 //QR CODE DOWNLOAD 
 Route::get('/qr-code/download', [ProfileController::class, 'downloadQR'])->name('qr-code.download');
 

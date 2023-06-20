@@ -9,7 +9,7 @@
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <a href="{{ route('create.donation')}}" class="btn btn-primary float-end">Create</a>
+                        <a href="{{ route('create.donation')}}" class="btn btn-primary float-end"><i class="fa fa-plus"></i></a>
                         <div class="btn-group mr-2">
                             <form action="{{ route('donation.index') }}" method="GET" class="d-flex">
                                 <input class="form-control me-2" type="search" name="search" placeholder="Search"

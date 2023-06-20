@@ -7,12 +7,13 @@
         <p class="mb-5">Scan the QR code to record attendance for <strong>{{ $event->title }}</strong></p>
 
         <div class="row">
-            <div class="col-md-8 mb-5">
+            <div class="col-lg-8 col-md-12 mb-5">
                 <div id="qr-video"></div>
                 <video id="preview"></video>
+                <button id="flip-camera" class="btn btn-primary mt-3">Flip Camera</button>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-12">
                 <h5>Instructions:</h5>
                 <ul>
                     <li>Point the camera at the QR code</li>
@@ -50,7 +51,28 @@
     </div>
 </div>
 
-<script type="text/javascript" src="asset/js/instascan.min.js"></script>
+<style>
+    #qr-video,
+    #preview {
+        width: 100%; /* Set the initial width */
+    }
+
+    @media (max-width: 992px) { /* For medium and smaller screens */
+        #qr-video,
+        #preview {
+            width: 100%; /* Adjust the width as needed for medium screens */
+        }
+    }
+
+    @media (max-width: 768px) { /* For small and smaller screens */
+        #qr-video,
+        #preview {
+            width: 100%; /* Adjust the width as needed for small screens */
+        }
+    }
+</style>
+
+<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
 <script>
     // Get the video element
@@ -106,5 +128,35 @@
     function padZero(number) {
         return number.toString().padStart(2, '0');
     }
+    
+    // Function to flip the camera
+    function flipCamera() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Flip the camera
+            const constraints = { video: { facingMode: { exact: 'environment' } } };
+            
+            // Get the updated stream
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then((stream) => {
+                    // Stop the current video stream
+                    if (video.srcObject) {
+                        const tracks = video.srcObject.getTracks();
+                        tracks.forEach((track) => {
+                            track.stop();
+                        });
+                    }
+                    
+                    // Set the new stream to the video element
+                    video.srcObject = stream;
+                })
+                .catch((error) => {
+                    console.error('Error accessing camera:', error);
+                });
+        }
+    }
+    
+    // Add event listener to the "Flip Camera" button
+    const flipCameraButton = document.getElementById('flip-camera');
+    flipCameraButton.addEventListener('click', flipCamera);
 </script>
 @endsection

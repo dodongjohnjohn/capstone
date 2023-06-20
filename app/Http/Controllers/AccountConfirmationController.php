@@ -24,26 +24,35 @@ class AccountConfirmationController extends Controller
     }
 
     public function toggleAccountConfirmation(Request $request)
-{
-    $user = User::findOrFail($request->id);
-    $user->account_confirmation = $request->accountConfirmation;
-    $user->save();
+    {
+        $user = User::findOrFail($request->id);
+        $user->account_confirmation = $request->accountConfirmation;
+        $user->save();
 
-    // Retrieve the phone number of the user
-    $phoneNumber = $user->phone_number;
+        // Retrieve the phone number of the user
+        $phoneNumber = $user->phone_number;
 
-    // Determine the message based on the account confirmation status
-    $message = $request->accountConfirmation === 'access' ? 'Your account has been confirmed. You can now login.' : 'Your account is restricted.';
+        // Determine the message based on the account confirmation status
+        $message = $request->accountConfirmation === 'access' ? 'Your account has been confirmed. You can now login.' : 'Your account is restricted.';
 
-    // Perform any necessary operations with the phone number
-    // Example: Sending SMS using Semaphore API
-    $response = Http::post('https://api.semaphore.co/api/v4/messages', [
-        'apikey' => '8a9b4ff3724e849c28872c3ed486f3ae',
-        'number' => $phoneNumber,
-        'message' => $message,
-    ]);
+        // Perform any necessary operations with the phone number
+        // Example: Sending SMS using Semaphore API
+        $response = Http::post('https://api.semaphore.co/api/v4/messages', [
+            'apikey' => '8a9b4ff3724e849c28872c3ed486f3ae',
+            'number' => $phoneNumber,
+            'message' => $message,
+        ]);
 
-    return redirect()->back()->with('success', 'Account confirmation status updated successfully.');
-}
+        return redirect()->back()->with('success', 'Account confirmation status updated successfully.');
+    }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Perform the search query to filter the members
+        $members = User::where('name', 'LIKE', "%$query%")->paginate(6);
+        $noResults = count($members) == 0;
+        return view('admindash.accountconfirmation.confirm_account', compact('members', 'noResults'));
+    }
 }
