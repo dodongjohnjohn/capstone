@@ -31,6 +31,7 @@
                   <p class=""><strong>Address:</strong> {{ $event['address'] }}</p>
                 </li>
                 @endforeach
+                
               </ul>
             </div>
           </div>
