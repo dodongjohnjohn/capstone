@@ -15,11 +15,7 @@
       </form>
     </div>
   </div>
-  <div class="col-md-12">
-    <div class="float-end mt-3">
-      {{ $events->links('pagination::bootstrap-4', ['links' => 6]) }}
-    </div>
-  </div>
+  
 </div>
 
 @php
@@ -65,6 +61,11 @@
       @endforeach
     </tbody>
   </table>
+  <div class="col-md-12">
+    <div class="float-end mt-3">
+      {{ $events->links('pagination::bootstrap-5', ['links' => 10]) }}
+    </div>
+  </div>
 </div>
 @endif
   </div>

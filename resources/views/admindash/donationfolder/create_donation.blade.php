@@ -26,6 +26,11 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="phone_number" class="form-label">Phone Number:</label>
+                            <input type="text" id="phone_number" name="phone_number" required class="form-control">
+                        </div>
+                        
+                        <div class="mb-3">
                             <label for="amount" class="form-label">Donation Amount:</label>
                             <input type="number" id="amount" name="amount" required class="form-control">
                         </div>

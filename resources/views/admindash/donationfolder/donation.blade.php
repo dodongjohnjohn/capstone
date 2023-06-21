@@ -18,11 +18,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="float-end mt-3">
-                            {{ $donations->appends(request()->query())->links('pagination::bootstrap-4') }}
-                        </div>
-                    </div>
+                   
                 </div>
 
                 @if ($donations->isEmpty())
@@ -73,6 +69,11 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="col-md-12">
+                        <div class="float-end mt-3">
+                            {{ $donations->appends(request()->query())->links('pagination::bootstrap-5') }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

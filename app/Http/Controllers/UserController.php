@@ -18,7 +18,7 @@ class UserController extends Controller
     }
     public function user_group()
 {
-    $groups = Group::paginate(9);
+    $groups = Group::paginate(8);
     $users = User::all();
     return view('userdash.user_group', compact('groups', 'users'));
 }

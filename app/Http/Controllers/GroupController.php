@@ -22,7 +22,7 @@ class GroupController extends Controller
         $groups = Group::when($search, function ($query, $search) {
             return $query->where('group_name', 'like', '%' . $search . '%')
                          ->orWhere('leader_name', 'like', '%' . $search . '%');
-        })->paginate(6);
+        })->paginate(10);
         return view('admindash.groupfolder.group', compact('groups', 'search'));
     }
 }

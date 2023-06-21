@@ -23,6 +23,7 @@ class MembersController extends Controller
                 $query->where(function($q) use ($search) {
                     $q->where('name', 'LIKE', "%{$search}%")
                       ->orWhere('address', 'LIKE', "%{$search}%")
+                      ->orWhere('phone_number', 'LIKE', "%{$search}%")
                       ->orWhere('email', 'LIKE', "%{$search}%");
                 });
             }

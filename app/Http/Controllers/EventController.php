@@ -21,7 +21,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::paginate(6);
+        $events = Event::paginate(10);
 
         if (Auth()->user()->role == 'admin') {
             return view('admindash.eventfolder.event', ['events' => $events]);
@@ -139,6 +139,7 @@ class EventController extends Controller
 
     $events = Event::where('title', 'LIKE', "%$query%")
         ->orWhere('description', 'LIKE', "%$query%")
+        ->orWhere('organizer', 'LIKE', "%$query%")
         ->orWhere('address', 'LIKE', "%$query%")
         ->orWhere('time', 'LIKE', "%$query%")
         ->orWhere('date', 'LIKE', "%$query%")

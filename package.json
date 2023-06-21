@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@zxing/library": "github:zxing-js/library",
+        "chart.js": "^4.3.0",
         "instascan": "^1.0.0"
     }
 }
