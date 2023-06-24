@@ -29,12 +29,12 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Organizer</th>
-        <th>Topic</th>
-        <th>Description</th>
-        <th>Venue</th>
-        <th>Schedule</th>
-        <th>Actions</th>
+        <th><strong>Organizer</strong></th>
+        <th><strong>Topic</strong></th>
+        <th><strong>Description</strong></th>
+        <th><strong>Venue</strong></th>
+        <th><strong>Schedule</strong></th>
+        <th><strong>Actions</strong></th>
       </tr>
     </thead>
     <tbody>
@@ -44,7 +44,7 @@
           <td>{!! str_ireplace(request('query'), '<mark>'.request('query').'</mark>', $event['title']) !!}</td>
           <td>{!! str_ireplace(request('query'), '<mark>'.request('query').'</mark>', $event['description']) !!}</td>
           <td>{!! str_ireplace(request('query'), '<mark>'.request('query').'</mark>', $event['address']) !!}</td>
-          <td>{{ $event['time'] }} | {{ $event['date'] }}</td>
+          <td>{{ date('F j, Y', strtotime($event['date'])) }} | {{ date('h:i A', strtotime($event['time'])) }}</td>
           <td>
             <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::fullUrl()) }}" class="btn btn-primary">Share link</a>
             @if(Auth::user()->isAdmin())

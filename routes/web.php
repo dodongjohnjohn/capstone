@@ -90,6 +90,7 @@ Route::controller(MembersController::class)->group(function(){
    Route::put('members/{id}/update', [MembersController::class, 'updateMember'])->name('members.update');
    Route::delete('members/{id}', [MembersController::class, 'deleteMember'])->name('members.delete');
    
+   
 
 
    });

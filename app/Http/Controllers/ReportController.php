@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\User;
-use App\Models\Event;
 use App\Models\Donation;
 use Carbon\Carbon;
 use App\Models\Group;
@@ -20,23 +19,15 @@ class ReportController extends Controller
     
     public function index()
     {
-        $members = User::all();
-        $events = Event::all();
-        $totalDonations = Donation::sum('amount');
         
+        $members = User::all();
+        $donations = Donation::all();
+        
+        $totalMembers = User::count();
+        $totalDonations = Donation::sum('amount');
+        $attendancePercentage = Attendance::count();
+    
 
-        $donations = Donation::select('created_at', 'amount')
-            ->whereYear('created_at', Carbon::now()->year)
-            ->get();
-
-
-            $totalMembers = User::count();
-            $totalDonations = Donation::sum('amount');
-            $totalGroups = Group::count();
-            $attendancePercentage = Attendance::count();
-
-            
-
-        return view('report', compact('totalMembers', 'totalDonations', 'totalGroups', 'attendancePercentage', 'members', 'events', 'totalDonations', 'donations'));
+        return view('report', compact('totalMembers', 'totalDonations', 'attendancePercentage', 'members', 'donations'));
     }
 }

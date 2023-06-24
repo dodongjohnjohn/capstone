@@ -14,9 +14,7 @@
                         <button class="btn btn-outline-primary" type="submit">Search</button>
                     </form>
                 </div>
-                <div class="float-end">
-                    {{ $events->links('pagination::bootstrap-4', ['links' => 6]) }}
-                </div>
+                
             </div>
         </div>
         @php
@@ -43,17 +41,19 @@
                                 <td>{!! str_ireplace(request('search'), '<mark>'.request('search').'</mark>', $event['title']) !!}</td>
                                 <td>{!! str_ireplace(request('search'), '<mark>'.request('search').'</mark>', $event['description']) !!}</td>
                                 <td>{!! str_ireplace(request('search'), '<mark>'.request('search').'</mark>', $event['address']) !!}</td>
-                                <td>{{ $event['time'] }} | {{ $event['date'] }}</td>
+                                <td>{{ date('F j, Y', strtotime($event['date'])) }} | {{ date('h:i A', strtotime($event['time'])) }}</td>
                                 <td>
                                     <a href="{{ route('view.attendance', ['eventId' => $event->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('add.attendance', ['eventId' => $event->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></a>
                                     <a href="{{ route('qr.scan', ['eventId' => $event->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-qrcode"></i></a>
     
                                     @if (Auth::check() && Auth::user()->isAdmin())
-                                        <form action="{{ route('attendance.destroy', ['id' => $event->id]) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                    <form action="{{ route('attendance.destroy', ['id' => $event->id]) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this event?')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
                                         </form>
                                     @endif
                                 </td>
@@ -61,6 +61,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="float-end">
+                    {{ $events->links('pagination::bootstrap-5', ['links' => 6]) }}
+                </div>
             </div>
     </div>
 </div>

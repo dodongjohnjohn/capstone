@@ -3,6 +3,19 @@
 <!-- Extend the 'link' view -->
 @extends('link')
 
+<style>
+  .mission, .vision {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+
+  }
+  
+  .mission-heading, .vision-heading {
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+</style>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
@@ -33,15 +46,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#contact">Contact Us</a>
       </li>
-  </ul>
-
-  <!-- Social icons -->
-  <ul class="navbar-nav d-flex flex-row">
-    <li class="nav-item me-3 me-lg-0">
-      <a class="nav-link" href="https://www.facebook.com/SFCHilongosChapter" rel="nofollow" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-    </li>
   </ul>
 </div>
 </div>
@@ -84,20 +88,27 @@
         <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8eW91dGh8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Image" class="img-fluid rounded">
       </div>
     </div>
-
-    <div class="row mt-5">
-      <div class="col-lg-6 aos-init" data-aos="fade-up" style="border-right: 1px solid orange;">
-        <h3 class="mb-4 heading">Our Mission</h3>
-        <p>Building the Church of the Home. Building the Church of the Poor.</p>
-      </div>
-      <div class="col-lg-6 aos-init" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="mb-4 heading" id="vision">Our Vision</h3>
-        <p>Every single man and woman all over the world experiencing Christ..</p>
-      </div>
-    </div>
   </div>
 </section>
 
+<div class="row mt-5 d-flex justify-content-center ">
+  <div class="col-md-4 aos-init" data-aos="fade-up" style="border-right: 5px solid orange;">
+    <h1 class="card-heading mission-heading text-center">Our Mission</h1>
+    <div class="card mission " style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+      <p>Our mission is to empower and inspire youth to reach their full potential and create a positive impact in their lives and communities. We believe that young individuals have the power to shape the future and contribute to the betterment of society.</p>
+      <p>Through our initiatives and programs, we aim to provide youth with the necessary resources, guidance, and opportunities to develop their skills, explore their passions, and become agents of positive change.</p>
+    </div>
+  </div>
+  <div class="col-md-4 aos-init" data-aos="fade-up" data-aos-delay="100">
+    <h1 class="card-heading vision-heading text-center" id="vision">Our Vision</h1>
+    <div class="card vision" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+      <p>Every single man and woman all over the world experiencing Christ. 
+        Our vision is to create a future where empowered youth are at the forefront of positive change, leading with purpose and making a lasting impact in their communities and beyond.</p>
+      <p>We envision a world where young individuals are equipped with the necessary skills, knowledge, 
+        and opportunities to shape a better future for themselves and future generations.Through our vision, we aspire to create a future where empowered youth. </p>
+    </div>
+  </div>
+</div>
 
 <!-- Contact Us section -->
 
@@ -129,23 +140,23 @@
         </div>
         <div class="col-lg-4 mb-4">
           <div class="widget">
-            <a class="navbar-brand" href="/" style="font-size: 30px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);">
-              <span class="text-warning">Sfc</span>Cfc
-            </a>
+            <div class="social-networks">
+              <p>Follow Us on </p>
+              <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.facebook.com/SFCHilongosChapter" class="facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="google"><i class="fab fa-google-plus"></i></a>
+            </div>
+           
             <!-- Widget content goes here -->
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="card-body p-4 text-center">
+  <div class="card-body p-2 text-center">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1648.0369629243794!2d124.74785286653088!3d10.37306193248466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33076ee956378fb5%3A0xae7f36f0e4559671!2sImmaculate%20Concepcion%20Parish!5e1!3m2!1sen!2sph!4v1686923578969!5m2!1sen!2sph" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
-  <div class="social-networks">
-    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-    <a href="https://www.facebook.com/SFCHilongosChapter" class="facebook"><i class="fab fa-facebook"></i></a>
-    <a href="#" class="google"><i class="fab fa-google-plus"></i></a>
-  </div>
+
   <div class="footer-bottom text-center py-3">
     <p>© 2023 SFC_CFC Event System. All rights reserved.</p>
   </div>

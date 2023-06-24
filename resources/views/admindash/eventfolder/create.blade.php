@@ -17,7 +17,7 @@
       </div>
       <br />
     @endif
-    <form method="post" action="{{ route('save_event') }}">
+    <form method="post" action="{{ route('save_event') }}" id="eventForm">
       <!-- Update the action attribute to point to the appropriate route -->
 
       <div class="container d-flex justify-content-between">
@@ -72,6 +72,7 @@
               </thead>
               <tbody>
                 @foreach ($members as $member)
+                @if ($member->role !== 'admin') <!-- CONDITION NI CJA TO CHECK IF ANG ROLE IS ADMIN SO EXCLUDED NA CJA SA PAG SEND UG SMS -->
                 <tr>
                   <td>
                     <div class="form-check">
@@ -84,6 +85,7 @@
                   </td>
                   <td>{{ $member->phone_number }}</td>
                 </tr>
+                @endif
                 @endforeach
               </tbody>
             </table>
@@ -97,11 +99,23 @@
 
       <div style="height: 20px;"></div> <!-- Add a div with a specific height for spacing -->
 
-      <div class="text-center mb-4">
-        <button type="submit" class="btn btn-danger" style="width: 50%;">Submit</button>
-      </div>
+      <div class="d-grid text-center">
+        <div class="position-relative">
+            <button type="submit" class="btn btn-primary" id="submitBtn">{{ __('Submit') }}</button>
+            <div id="preloader" class="position-absolute top-50 start-50 translate-middle" style="display: none;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
     </form>
   </div>
 </div>
+<script>
+        document.getElementById('eventForm').addEventListener('submit', function() {
+            document.getElementById('submitBtn').setAttribute('disabled', 'disabled');
+            document.getElementById('preloader').style.display = 'block';
+        });
+    </script>
 @endsection
-

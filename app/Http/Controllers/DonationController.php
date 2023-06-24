@@ -80,7 +80,7 @@ class DonationController extends Controller
         $donorPhone = $request->input('phone_number');
     
         // Build the SMS message
-        $message = 'I have received your donation ' . $donorAmount . ' Thank you, ' . $donorName . ', for your generous donation!';
+        $message = 'We have received your donation ' . $donorAmount . ' Thank you, ' . $donorName . ', for your generous donation!';
     
         // Send SMS using Semaphore
         $response = Http::post('https://api.semaphore.co/api/v4/messages', [

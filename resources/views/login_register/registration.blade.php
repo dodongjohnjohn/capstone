@@ -3,9 +3,9 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card opacity" style="background: rgba(255, 255, 255, 0.178); backdrop-filter: blur(10px);">
-        <div class="card-header">Register Here</div>
+    <div class="col-md-4 mt-4">
+      <div class="card opacity" style="background: rgba(255, 255, 255, 0.178); backdrop-filter: blur(8px);">
+        <h3 class="card-header text-dark fw-bold">Register Here</h3>
         <div class="card-body">
           <form method="POST" action="data_insert" enctype="multipart/form-data">
             @csrf
