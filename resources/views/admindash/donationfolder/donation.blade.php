@@ -50,7 +50,7 @@
                                     <td>{!! str_ireplace($search, '<mark>'.$search.'</mark>', e($donation->name)) !!}</td>
                                     <td>{!! str_ireplace($search, '<mark>'.$search.'</mark>', e($donation->email)) !!}</td>
                                     <td>{!! str_ireplace($search, '<mark>'.$search.'</mark>', e($donation->amount)) !!}</td>
-                                    <td>{!! str_ireplace($search, '<mark>'.$search.'</mark>', e($donation->created_at->format('F j, Y | H:i:A'))) !!}</td>
+                                    <td>{!! str_ireplace($search, '<mark>'.$search.'</mark>', e(date('F j, Y', strtotime($donation['created_at'])) . ' | ' . date('h:i A', strtotime($donation['created_at'])))) !!}</td>
                                     @if (Auth::check() && Auth::user()->isAdmin())
                                         <td>
                                             <a href="{{ route('donation.edit', $donation->id) }}" class="btn btn-primary">Edit</a>

@@ -14,7 +14,6 @@
         margin-top: 20px;
     }
     .donor-name:hover {
-        background-color: #f5f5f5;
         cursor: pointer;
     }
     @media (max-width: 767px) {
@@ -31,13 +30,13 @@
             <div class="card-body">
                 <div class="row justify-content-center">
                     <div class="col-md-3">
-                        <h5>Donor Names</h5>
+                        <h5 class="mb-3 fw-bold">Donor Names</h5>
                         @foreach ($donations as $donation)
                             <p class="donor-name">{{ $donation->name }}</p>
                         @endforeach
                     </div>
                     <div class="col-md-3">
-                        <h5>Donation Amounts</h5>
+                        <h5 class="mb-3 fw-bold">Donation Amounts</h5>
                         @foreach ($donations as $donation)
                             <p class="donor-name">{{ $donation->amount }}</p>
                         @endforeach

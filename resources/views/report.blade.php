@@ -131,7 +131,7 @@
                                     <td>{{ $donation->name }}</td>
                                     <td>{{ $donation->email }}</td>
                                     <td>{{ $donation->amount }}</td>
-                                    <td>{{ $donation->created_at->format('F j, Y | H:i:A') }}</td>
+                                    <td>{{ date('F j, Y', strtotime($donation['created_at'])) }} | {{ date('h:i A', strtotime($donation['created_at'])) }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
