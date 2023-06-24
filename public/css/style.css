@@ -290,3 +290,11 @@ border-bottom: 5px solid orange;
             width: 100%; /* Adjust the width as needed for small screens */
         }
     }
+
+    /* para ma hidden ang pag print sa button. */
+    @media print {
+      .no-print {
+        display: none;
+      }
+    }
+    
