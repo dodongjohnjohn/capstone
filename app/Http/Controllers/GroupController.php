@@ -21,7 +21,10 @@ class GroupController extends Controller
         $search = $request->input('search');
         $groups = Group::when($search, function ($query, $search) {
             return $query->where('group_name', 'like', '%' . $search . '%')
-                         ->orWhere('leader_name', 'like', '%' . $search . '%');
+                         ->orWhere('leader_name', 'like', '%' . $search . '%')
+                         ->orWhereHas('groupMembers', function ($query) use ($search) {
+                             $query->where('user_name', 'like', '%' . $search . '%');
+                         });
         })->paginate(10);
         return view('admindash.groupfolder.group', compact('groups', 'search'));
     }
@@ -94,13 +97,15 @@ class GroupController extends Controller
         return view('admindash.groupfolder.view_group', compact('group', 'users'));
     }
     
-    
     public function add_member($id)
     {
-        $group = Group::find($id); 
+        $group = Group::find($id);
         $users = User::all();
-        return view('admindash.groupfolder.add_member', compact('group', 'users'));
+        $group_members = GroupMember::all(); // Fetch group members associated with the group
+    
+        return view('admindash.groupfolder.add_member', compact('group', 'users', 'group_members'));
     }
+    
     
     public function update(Request $request, $id)
     {

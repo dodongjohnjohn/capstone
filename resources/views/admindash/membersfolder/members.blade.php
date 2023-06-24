@@ -1,6 +1,5 @@
 @extends('admindash.admin')
 
-
 @section('menu-content')
 <div class="card">
   <div class="container">
@@ -19,9 +18,9 @@
     
     <div class="row mb-3">
       <div class="col-md-12">
-          <div class="float-end">
-              {{ $members->links('pagination::bootstrap-4', ['links' => 6]) }}
-          </div>
+        @if (session('user_role') === 'admin')
+          <a href="" class="btn btn-primary">Add Member</a>
+        @endif
       </div>
     </div>
     
@@ -31,12 +30,12 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Phone Number</th>
-            <th>Role</th>
+            <th><strong>Name</strong></th>
+            <th><strong>Address</strong></th>
+            <th><strong>Phone Number</strong></th>
+            <th><strong>Role</strong></th>
             @if (session('user_role') === 'admin')
-              <th>Action</th>
+              <th><strong>Action</strong></th>
             @endif
           </tr>
         </thead>
@@ -63,15 +62,19 @@
                 </div>
               </td>
               
-                
-                
-              
               @endif
             </tr>
           @endforeach
         </tbody>
       </table>
     @endif
+    <div class="row mb-3">
+      <div class="col-md-12">
+          <div class="float-end">
+              {{ $members->links('pagination::bootstrap-5', ['links' => 6]) }}
+          </div>
+      </div>
+    </div>
   </div>
   
 </div>

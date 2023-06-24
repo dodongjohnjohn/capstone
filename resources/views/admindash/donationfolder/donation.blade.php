@@ -29,14 +29,14 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>lister's name</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Amount</th>
-                                <th>Date</th>
+                               <th><strong>lister's name</strong></th>
+                               <th><strong>Name</strong></th>
+                               <th><strong>Email</strong></th>
+                               <th><strong>Amount</strong></th>
+                               <th><strong>Date</strong></th>
                                 @if (Auth::check() && Auth::user()->isAdmin())
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                   <th><strong>Edit</strong></th>
+                                   <th><strong>Delete</strong></th>
                                 @endif
                             </tr>
                         </thead>
@@ -50,7 +50,7 @@
                                     <td>{!! str_ireplace($search, '<mark>'.$search.'</mark>', e($donation->name)) !!}</td>
                                     <td>{!! str_ireplace($search, '<mark>'.$search.'</mark>', e($donation->email)) !!}</td>
                                     <td>{!! str_ireplace($search, '<mark>'.$search.'</mark>', e($donation->amount)) !!}</td>
-                                    <td>{!! str_ireplace($search, '<mark>'.$search.'</mark>', e($donation->created_at)) !!}</td>
+                                    <td>{!! str_ireplace($search, '<mark>'.$search.'</mark>', e($donation->created_at->format('F j, Y | H:i:A'))) !!}</td>
                                     @if (Auth::check() && Auth::user()->isAdmin())
                                         <td>
                                             <a href="{{ route('donation.edit', $donation->id) }}" class="btn btn-primary">Edit</a>
@@ -60,7 +60,7 @@
                                             <form action="{{ route('donation.destroy', $donation->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this event?')">Delete</button>
                                             </form>
                                             @endif
                                         </td>

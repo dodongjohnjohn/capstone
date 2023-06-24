@@ -33,22 +33,18 @@
             <i class="fa fa-user-circle" aria-hidden="true"></i>
             {{ session('user_name') }}
           </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <li>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 @yield('profile-content')
                 <a class="dropdown-item" href="{{ route('userprofile') }}">User Profile</a>
                 
-              </li>
-
-
-          
-          </ul>
+          </div>
         </li>
 
       </ul>
     </div>
   </div>
 </nav>
+
 
 <!-- Rest of your HTML content -->
 
@@ -70,7 +66,7 @@
         <div class="mt-3">
           <div class="row">
             <div class="col-md-6">
-              <h3 class="subheading text-light fw-bold">Welcome to Sfc|Cfc</h3>
+              <h3 class="subheading text-warning fw-bold">Welcome to Sfc|Cfc</h3>
               <p class="text-dark fw-bold">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
               <p class="text-dark fw-bold">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
                 <span id="additionalContent" style="display: none;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span></p>

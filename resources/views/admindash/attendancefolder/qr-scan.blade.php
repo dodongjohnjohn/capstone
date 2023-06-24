@@ -42,9 +42,16 @@
                         </select>
                     </div>
                     <br>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
+                    <div class="d-grid">
+                        <div class="position-relative">
+                          <button type="submit" class="btn btn-primary" id="submitBtn">{{ __('Submit') }}</button>
+                          <div id="preloader" class="position-absolute top-50 start-50 translate-middle" style="display: none;">
+                            <div class="spinner-border text-black" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                 </form>
             </div>
         </div>
@@ -53,6 +60,11 @@
 <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
 <script>
+    
+    document.getElementById('attendance-form').addEventListener('submit', function() {
+    document.getElementById('submitBtn').setAttribute('disabled', 'disabled');
+    document.getElementById('preloader').style.display = 'block';
+  });
     // Get the video element
     const video = document.getElementById('preview');
 

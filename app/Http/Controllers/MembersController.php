@@ -34,6 +34,7 @@ class MembersController extends Controller
             return view('admindash.membersfolder.members', ['members' => $data, 'noResults' => $noResults]);
         }
     }
+    
 
     public function editMember($id)
     {
