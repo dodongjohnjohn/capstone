@@ -108,7 +108,7 @@
             <div id="donation" class="container">
                 <h3>Donation Reports</h3>
                 <div class="btn-group m-3">
-                    <button class="btn btn-primary" onclick="printReport('donation')">
+                    <button class="btn btn-primary no" onclick="printReport('donation')">
                         <i class="fa fa-print"></i> Print
                     </button>
                 </div>
@@ -199,6 +199,9 @@
 
 <script>
     function printReport(reportId) {
+        const printButton = document.getElementById(reportId).getElementsByClassName('btn-primary')[0];
+        printButton.style.display = 'none'; // Hide the print button
+
         const report = document.getElementById(reportId).innerHTML;
         const printWindow = window.open('', '', 'height=500,width=800');
         printWindow.document.write('<html><head><title>Print Report</title>');
@@ -207,5 +210,8 @@
         printWindow.document.write('</body></html>');
         printWindow.document.close();
         printWindow.print();
+
+        // Show the print button after printing is done (when the print dialog is closed)
+        printButton.style.display = 'block';
     }
 </script>

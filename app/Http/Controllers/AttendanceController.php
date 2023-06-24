@@ -132,8 +132,8 @@ public function destroy($id)
 public function printAttendanceRecords($eventId)
 {
     // Retrieve the event and attendance records
-    $event = Event::findOrFail($eventId);
-    $attendance = Attendance::where('event_id', $eventId)->get();
+    $event = Event::findOrFail($eventId); //findOrFail($eventId) METHOD TO RETRIEVED SPECIFIC EVENT BASED ON THE EVENT ID PARAMETE
+    $attendance = Attendance::where('event_id', $eventId)->get(); // WHERE IS PARA MA FILTER AND ATTENDANCE RECORD BASED SA EVENT ID NGA MAG MATCH SA VIRABLE NGA EVENTID
 
     // Create a new TCPDF instance
     $pdf = new TCPDF();
